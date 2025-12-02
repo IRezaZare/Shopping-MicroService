@@ -12,8 +12,6 @@ public class Product : BaseEntity
     [BsonRepresentation(BsonType.Decimal128)]
     public decimal Price { get; set; }
     //Relation
-    public object Brands { get; set; }
-    public object Types { get; set; }
-
-
+    public ProductBrand Brands { get; set; }
+    public ProductType Types { get; set; }
 }
