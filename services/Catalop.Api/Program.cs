@@ -5,6 +5,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c=>
+    c.SwaggerDoc("v1" , new ()
+    {
+        Title = "Catalog.Api",
+        Version = "v1",
+        Description = "Catalog Api"
+    })
+    );
 
 var app = builder.Build();
 
@@ -12,6 +21,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseAuthorization();
