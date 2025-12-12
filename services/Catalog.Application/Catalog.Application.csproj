@@ -11,11 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mapper\" />
     <Folder Include="Commands\" />
-    <Folder Include="Handlers\" />
-    <Folder Include="Responses\" />
-    <Folder Include="Queries\" />
+    <Folder Include="Queries\Products\" />
+    <Folder Include="Queries\Types\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="MediatR" Version="12.5.0" />
   </ItemGroup>
 
 </Project>
