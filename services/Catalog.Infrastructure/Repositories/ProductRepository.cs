@@ -7,6 +7,12 @@ namespace Catalog.Infrastructure.Repositories;
 
 public class ProductRepository(ICatalogContext context) : IProductRepository
 {
+    public async Task<Product> CreateProduct(Product product)
+    {
+        await context.Products.InsertOneAsync(product);
+        return product;
+    }
+
     public async Task<IEnumerable<Product>> GetProducts()
     {
         return await context.Products.Find(x => true).ToListAsync();    

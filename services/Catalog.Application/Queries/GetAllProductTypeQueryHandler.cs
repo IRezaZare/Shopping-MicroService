@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Catalog.Application.Queries;
 
-public class GetAllProductTypeQuery : IRequest<IEnumerable<TypeResponse>>
+public class GetAllProductTypeQuery : IRequest<IEnumerable<TypeResponse>>, IRequest<IEnumerable<ProductResponse>>
 {
 
 }
