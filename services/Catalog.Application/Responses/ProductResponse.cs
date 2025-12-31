@@ -1,10 +1,11 @@
 ﻿using Catalog.Core.Entities;
+using MediatR;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
 namespace Catalog.Application.Responses;
 
-public class ProductResponse
+public class ProductResponse : IRequest
 {
     public string Id { get; set; }
     public string Name { get; set; }
