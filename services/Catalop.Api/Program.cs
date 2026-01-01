@@ -1,9 +1,22 @@
+using Catalog.Core.Repositories;
+using Catalog.Infrastructure.Data;
+using Catalog.Infrastructure.Repositories;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+// Register AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
+// Register Mediator
+builder.Services.AddMediatR(x =>  x.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+//DI
+builder.Services.AddScoped<ICatalogContext, CatalogContext>();
+builder.Services.AddScoped<ITypeRepository , TypeRepository>();
+builder.Services.AddScoped<IBrandRepository , BrandRepository>();
+builder.Services.AddScoped<IProductRepository , ProductRepository>();
+// Add Swagger Services
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c=>
