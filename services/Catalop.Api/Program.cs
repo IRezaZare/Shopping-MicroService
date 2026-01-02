@@ -2,6 +2,7 @@ using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Data;
 using Catalog.Infrastructure.Repositories;
 using System.Reflection;
+using Asp.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Register AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
+//Register Versioning
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1,0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+});
 // Register Mediator
 builder.Services.AddMediatR(x =>  x.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 //DI
